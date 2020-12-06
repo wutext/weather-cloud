@@ -1,0 +1,25 @@
+
+#天气预报调用接口获取信息到页面服务
+server:
+  port: 8087
+spring:
+  application:
+    name: msa-weather-zuul-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  httpclient:
+    connection-timeout: 50000
+    connection-timer-repeat: 50000
+zuul:
+  routes:
+    city:
+      path: /city/**
+      serviceId: msa-weather-city-server
+    data:
+      path: /data/**
+      serviceId: msa-weather-data-server

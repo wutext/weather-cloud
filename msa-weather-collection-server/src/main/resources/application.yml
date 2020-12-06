@@ -1,0 +1,18 @@
+
+#获取城市天气信息采集服务(通过第三方接口获取数据同步到redis数据库)
+server:
+  port:8081
+
+
+spring:
+  profiles:
+    active: redis
+  application:
+    name: msa-weathere-collection-server
+  thymeleaf:
+    cache: false
+feign:
+  httpclient:
+    connection-timeout: 5000
+    connection-timer-repeat: 5000
+

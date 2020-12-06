@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" ></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/report.js}"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <H1 th:text="${reportModel.title}"> 老武 </H1>
+            <select class="custom-select" id="selectCityId">
+                <option th:each="list : ${reportModel.cityList}"
+                        th:value="${list.cityId}"
+                        th:text="${list.cityName}"
+                        th:selected="${list.cityId eq reportModel.cityId}">
+
+                </option>
+            </select>
+        </div>
+
+        <div class="row">
+            <h1 class="text-success" th:text="${report.city}"></h1>
+        </div>
+
+        <div class="row">
+            <p>
+                当前温度： <span th:text="${report.wendu}"></span>
+            </p>
+        </div>
+
+        <div class="row">
+            <p>
+                温馨提示： <span th:text="${report.ganmao}"></span>
+            </p>
+        </div>
+
+        <!--<div class="row">
+            <p>
+                空气质量： <span th:text="${report.data.yesterday}"></span>
+            </p>
+        </div>-->
+
+        <div class="row">
+            <div class="card border-info" th:each="forecast: ${report.forecast }">
+                <div class="card-body text-info">
+                    <p class="card-text " th:text="${forecast.date}">日期</p>
+                    <p class="card-text" th:text="${forecast.high}">天气类型</p>
+                    <p class="card-text" th:text="${forecast.fengli}"></p>
+                    <p class="card-text" th:text="${forecast.low}"></p>
+                    <p class="card-text" th:text="${forecast.fengxiang}"></p>
+                    <p class="card-text" th:text="${forecast.type}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+#天气预报获取数据API服务
+server:
+  port: 8089
+spring:
+  profiles:
+    active: redis
+  application:
+    name: msa-weather-data-server
+  thymeleaf:
+    cache: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  httpclient:
+    connection-timeout: 5000
+    connection-timer-repeat: 5000

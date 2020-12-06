@@ -1,0 +1,21 @@
+
+#天气预报获取城市数据信息服务
+server:
+  port: 8082
+spring:
+  profiles:
+    active: redis
+  application:
+    name: msa-weather-city-server
+  thymeleaf:
+    cache: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+feign:
+  httpclient:
+    connection-timeout: 5000
+    connection-timer-repeat: 5000
+

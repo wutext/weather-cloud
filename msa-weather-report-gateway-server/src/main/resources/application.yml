@@ -1,0 +1,20 @@
+
+#天气预报调用接口获取信息到页面服务
+server:
+  port: 8084
+spring:
+  application:
+    name: micro-weathere-report-gateway-server
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  httpclient:
+    connection-timeout: 50000
+    connection-timer-repeat: 50000
+  hystrix:
+    enabled: true
